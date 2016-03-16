@@ -33,12 +33,16 @@ public int binarySearch(int catNumToFind) {
     int high = store.length;
     while(low <= high) {
         int pick = (low+high)/2;
-        if (store[pick].getCatNum() == catNumToFind) {
-            return store[pick].getInventory();
-        } else if (store[pick].getCatNum() > catNumToFind) {
-            high = pick-1;
+        if (pick < store.length){
+            if (store[pick].getCatNum() == catNumToFind) {
+                return store[pick].getInventory();
+            } else if (store[pick].getCatNum() > catNumToFind) {
+                high = pick-1;
+            } else {
+                low = pick+1;
+            }
         } else {
-            low = pick+1;
+            return -1;
         }
     }
     return -1;    
